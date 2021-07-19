@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    width: 39vw;
+    height: 80vh;
+    align-self: center;
+    padding-left: 25px;
+
+}

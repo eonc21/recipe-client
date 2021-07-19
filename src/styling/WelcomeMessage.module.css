@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    align-self: center;
+    align-items: flex-start;
+    justify-content: center;
+    padding-right: 25px;
+
+
+}
+
+h1 {
+    font-size: 3.25rem;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    
+}
