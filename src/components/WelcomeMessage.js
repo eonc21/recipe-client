@@ -9,10 +9,9 @@ const WelcomeMessage = () => {
             <h3>Easy, cheap and fast recipes I am <br/> saving for future reference.</h3>
             <div className={styles.buttonContainer}>
                 <Button buttonText="Take a look"/>
-                <Button buttonText="Add recipe"/>
+                <Button buttonText="Add recipe" buttonColor="#EE6F6C"/>
             </div>
             
-
         </div>
      );
 }
