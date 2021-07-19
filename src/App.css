@@ -1,8 +1,13 @@
+html {
+  background-color: #FFFDFB;
+}
+
 .App {
   display: flex;
   justify-content: center;
   flex-direction: row;
   height: 100vh;
+  min-width: 600px;
 }
 
 .Navigation {
@@ -19,17 +24,22 @@
   display: flex;
   flex-direction: row;
   text-align: center;
-  width: 25vw;
-  min-width: 300px;
+  width: 30vw;
+  min-width: 400px;
   justify-content: space-between;
   list-style: none;
   font-size: 1rem;
   margin-right: 60px;
   animation: 1s ease-out 0s 1 slideInFromLeft;
-
-
-
+  font-weight: bold;
 }
+
+.link {
+  text-decoration: none;
+  color: #4E3D42;
+}
+
+
 
 @keyframes slideInFromLeft {
   0% {

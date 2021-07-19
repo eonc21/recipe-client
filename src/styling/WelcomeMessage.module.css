@@ -11,10 +11,14 @@
 
 
 }
+h1, h2, h3 {
+    color: #4E3D42;
+    font-family: 'Oxygen', sans-serif;
+}
+
 
 h1 {
     font-size: 3.25rem;
-    font-family: 'Oxygen', sans-serif;
     font-weight: 500;
 }
 

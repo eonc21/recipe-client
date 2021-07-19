@@ -12,22 +12,22 @@ import {
 
 function App() {
   return (
-    <div>
+    <div className="everything">
     <div className="App">
       <Router>
-<nav className="Navigation">
+        <nav className="Navigation">
         <ul className="List">
           <li>
-            <Link href="#">HOME</Link>
+            <Link className="link" href="#">ALL RECIPES</Link>
           </li>
           <li>
-            CREATE
+            <Link className="link" href="#">CREATE RECIPE</Link>
           </li>
           <li>
-            ABOUT ME
+            <Link className="link" href="#">ABOUT ME</Link>
           </li>
           <li>
-            CODE
+            <Link className="link" href="#">CODE</Link>
           </li>
         </ul>
       </nav>
