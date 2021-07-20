@@ -1,9 +1,10 @@
 .container {
     display: flex;
-    /* flex-wrap: wrap; */
-    width: 70vw;
+    flex-wrap: wrap;
+    width: 80vw;
    
     align-self: center;
     justify-content: center;
-    border: solid 3px red;
+    min-width: 1000px;
+    min-height: 600px;
 }

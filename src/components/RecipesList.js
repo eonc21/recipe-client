@@ -10,7 +10,7 @@ const RecipesList = () => {
         fetch("http://localhost:5001/api/recipes/getAll")
         .then(response => response.json())
         .then(res =>{
-             console.log(res.map(res => res.title))  
+             console.log(res)  
              setRecipes(res)
             })
     }, [])
@@ -19,6 +19,7 @@ const RecipesList = () => {
             {recipes.map(recipe => (
                 <Recipe 
                 recipeTitle={recipe.title}
+                recipePicture={recipe.pictureLink}
                 recipeDescription={recipe.description}
                 />
             ))}

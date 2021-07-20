@@ -10,6 +10,7 @@ import {
   Link
 } from "react-router-dom";
 import RecipesList from './components/RecipesList';
+import RecipeMessage from './components/RecipeMessage';
 
 function App() {
   return (
@@ -38,8 +39,9 @@ function App() {
       <Picture />
       
     </div>
-    
-      <div className="App">
+  
+      <div className="AppColumn">
+        <RecipeMessage />
           <RecipesList />
 
       </div>

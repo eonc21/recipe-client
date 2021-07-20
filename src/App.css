@@ -8,7 +8,19 @@ html {
   flex-direction: row;
   height: 100vh;
   min-width: 600px;
+  /* border: solid green 2px; */
 }
+
+.AppColumn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* height: 100vh; */
+  min-width: 600px;
+}
+
+
+
 
 .Navigation {
   display: flex;

@@ -10,14 +10,22 @@ const Recipe = ({ recipeTitle, recipeDescription, recipePicture }) => {
     useEffect(() => {
         setTitle(recipeTitle)
         setDescription(recipeDescription)
+        setPicture(recipePicture)
     }, [])
 
     return ( 
         <div className={styles.container} >
-            <img src={picture}/>
-            <h3>{title}</h3>
-            <p>{description}</p>
+            <div className={styles.imageContainer}>
+              <img className={styles.image} src={picture}/>
 
+            </div>
+            <div className={styles.textContainer}>
+                <h3>{title}</h3>
+                <nobr></nobr>
+                {/* <h3>---------</h3> */}
+                <p>{description}</p>
+            </div>
+            
         </div>
     );
 }
