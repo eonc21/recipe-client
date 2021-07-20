@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import RecipesList from './components/RecipesList';
 
 function App() {
   return (
@@ -37,7 +38,11 @@ function App() {
       <Picture />
       
     </div>
-    <WelcomeMessage />
+    
+      <div className="App">
+          <RecipesList />
+
+      </div>
     </div>
   );
 }
