@@ -1,7 +1,23 @@
 .container {
     display: flex;
-width: 1000px;    
-height: fit-content;
-border: solid 2px red;
-justify-content: center;
+    flex-direction: row;
+    width: 50vw;    
+    min-width: 500px;
+    height: min-content;
+    border: solid 1px red;
+    border-radius: 20px;
+    justify-content: space-evenly;
+    font-size: large;
+    text-align: center;
+    margin-right: 7.5%;
+    /* background-color: rgb(255, 173, 51);X     */
+
+
+
+}
+
+.independentContainer {
+    align-self: center;
+    width: 16.6667%;
+    text-align: center;
 }

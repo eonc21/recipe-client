@@ -1,9 +1,13 @@
 import styles from '../styling/Category.module.css'
 
 
-const Category = ({ categoryTitle }) => {
+const Category = ({ categoryTitle, onClick, colour }) => {
     return ( 
-        <div className={styles.container}>
+        <div
+         className={styles.container}
+         style={{backgroundColor: colour}}
+
+         onClick={onClick}>
             {categoryTitle}
         </div>
      );

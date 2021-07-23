@@ -4,6 +4,12 @@ import styles from '../styling/CategoriesList.module.css'
 
 const CategoriesList = () => {
 
+    const onClick = (index) => {
+        alert('CLICK')
+        setColour("green")
+    }
+
+    const [colour, setColour] = useState([])
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -18,9 +24,14 @@ const CategoriesList = () => {
 
     return (  
         <div className={styles.container}>
-            {categories.map(category => (
+            <div className={styles.independentContainer}>All</div>
+            {categories.map((category, index) => (
                 <Category 
-                categoryTitle={category.stringName} />
+                colour={colour[index]}
+                categoryTitle={category.stringName}
+                onClick={() => { 
+                    onClick(index)
+                }} />
             ))}
             
         </div>
