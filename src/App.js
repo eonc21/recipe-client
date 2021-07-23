@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import RecipesList from './components/RecipesList';
 import RecipeMessage from './components/RecipeMessage';
+import CategoriesList from './components/CategoriesList';
 
 function App() {
   return (
@@ -41,7 +42,11 @@ function App() {
     </div>
   
       <div className="AppColumn">
+        <div className="container">
         <RecipeMessage />
+        <CategoriesList />
+        </div>
+        
           <RecipesList />
 
       </div>
