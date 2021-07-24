@@ -4,13 +4,13 @@
     width: 50vw;    
     min-width: 500px;
     height: min-content;
-    border: solid 1px red;
-    border-radius: 20px;
+    /* border: solid 1px red; */
+    border-radius: 10px;
     justify-content: space-evenly;
     font-size: large;
     text-align: center;
     margin-right: 7.5%;
-    /* background-color: rgb(255, 173, 51);X     */
+    background-color: #ffe7af;    
 
 
 
