@@ -2,7 +2,7 @@ import CategoriesList from "./CategoriesList";
 import RecipesList from "./RecipesList";
 import RecipeMessage from "./RecipeMessage";
 import styles from '../styling/Wrapper.module.css'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 const Wrapper = () => {
@@ -12,15 +12,9 @@ const Wrapper = () => {
     const [filters, setFilters] = useState([]);
 
 
-    
-
      const handleFilterChange = (newValue) => {
         setFilters(newValue)
       }
-
-      useEffect(() => {
-          console.log(filters)
-      }, [filters])
       
 
       /**
@@ -46,11 +40,25 @@ const Wrapper = () => {
      useEffect(() => {
         fetch("http://localhost:5001/api/categories/getAll")
         .then(response => response.json())
-        .then(res =>{
-             console.log(res)  
+        .then(res =>{            
              setCategories(res)
+
             })
-    }, [])
+    }, [filters])
+    
+    
+    const previousValues = useRef({ filters, recipes });
+  
+    useEffect(() => {
+      if (
+        previousValues.current.filters !== filters &&
+        previousValues.current.recipes !== recipes
+      ) {
+
+        console.log("both changed")
+        previousValues.current = { filters, recipes };
+      }
+    });
 
 
     return ( 
@@ -64,7 +72,8 @@ const Wrapper = () => {
             
             <div className={styles.recipeContainer}>
                 <RecipesList 
-                    recipes={recipes} />
+                    recipes={recipes}
+                    filters={filters} />
 
             </div>
         </div>

@@ -4,18 +4,19 @@ import styles from '../styling/CategoriesList.module.css'
 import { useBetween } from "use-between";
 
 const CategoriesList = ({ categories, onChange }) => {
+
     const [categoriesSelected, setCategoriesSelected] = useState([])
     const [colour, setColour] = useState([5])
     const [fontColour, setFontColour] = useState([5])
-    const lastElement = colour.length
-
     const [border, setBorder] = useState([5])
+    const lastElement = colour.length
 
 
     let temp = [...colour]
     let tempFont = [...fontColour]
     let borderRadius = [...border]
     let tempSelected = [...categoriesSelected]
+    
     const onClick = (index, category) => {
 
         if (colour[index] === '#ffc53b') {
@@ -39,14 +40,10 @@ const CategoriesList = ({ categories, onChange }) => {
                 console.log(index, lastElement)
             }
 
-            // console.log(tempSelected)
 
 
             
-        }
-
-        // console.log(colour)   this went right, it's good
-        
+        }        
          }
 
             useEffect(() => {
