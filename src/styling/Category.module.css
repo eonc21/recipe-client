@@ -1,6 +1,7 @@
 .container {
     width: 16.6667%;
     text-align: center;
+    height: 100%;
     align-items: center;
     padding: 10px 0 10px 0;
 }

@@ -5,11 +5,21 @@ import styles from '../styling/CategoriesList.module.css'
 const CategoriesList = () => {
 
     const onClick = (index) => {
-        alert('CLICK')
-        let temp = [...colour]
-        temp[index] = "orange"
-        setColour(temp)
-        console.log(colour)
+
+        if (colour[index] === 'orange') {
+            let temp = [...colour]
+            temp[index] = "white"
+            setColour(temp)
+        
+        } else {
+            let temp = [...colour]
+            temp[index] = "orange"
+            setColour(temp)
+        }
+        
+        // console.log(colour)   this went right, it's good
+
+        
     }
 
     const [colour, setColour] = useState([])
