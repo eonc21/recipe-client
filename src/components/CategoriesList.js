@@ -6,7 +6,10 @@ const CategoriesList = () => {
 
     const onClick = (index) => {
         alert('CLICK')
-        setColour("green")
+        let temp = [...colour]
+        temp[index] = "orange"
+        setColour(temp)
+        console.log(colour)
     }
 
     const [colour, setColour] = useState([])
@@ -16,7 +19,7 @@ const CategoriesList = () => {
         fetch("http://localhost:5001/api/categories/getAll")
         .then(response => response.json())
         .then(res =>{
-             console.log(res)  
+            //  console.log(res)  
              setCategories(res)
             })
 
