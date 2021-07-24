@@ -9,12 +9,25 @@ const Wrapper = () => {
 
     const [recipes, setRecipes] = useState([])
     const [categories, setCategories] = useState([])
+    const [filters, setFilters] = useState([]);
 
-    /**
+
+    
+
+     const handleFilterChange = (newValue) => {
+        setFilters(newValue)
+      }
+
+      useEffect(() => {
+          console.log(filters)
+      }, [filters])
+      
+
+      /**
      * useEffect that fetches the recipes
      * from the getAll endpoint.
      */
-
+      
     useEffect(() => {
         fetch("http://localhost:5001/api/recipes/getAll")
         .then(response => response.json())
@@ -39,12 +52,14 @@ const Wrapper = () => {
             })
     }, [])
 
+
     return ( 
         <div className={styles.container}>
             <div className={styles.row}>
                 <RecipeMessage />
                 <CategoriesList 
-                    categories={categories}/>
+                    categories={categories}
+                    onChange={handleFilterChange}/>
             </div>
             
             <div className={styles.recipeContainer}>

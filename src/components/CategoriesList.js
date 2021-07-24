@@ -3,13 +3,20 @@ import Category from "./Category";
 import styles from '../styling/CategoriesList.module.css'
 import { useBetween } from "use-between";
 
-const CategoriesList = ({ categories }) => {
+const CategoriesList = ({ categories, onChange }) => {
+    const [categoriesSelected, setCategoriesSelected] = useState([])
+    const [colour, setColour] = useState([5])
+    const [fontColour, setFontColour] = useState([5])
+    const lastElement = colour.length
 
+    const [border, setBorder] = useState([5])
+
+
+    let temp = [...colour]
+    let tempFont = [...fontColour]
+    let borderRadius = [...border]
+    let tempSelected = [...categoriesSelected]
     const onClick = (index, category) => {
-
-        let temp = [...colour]
-        let tempFont = [...fontColour]
-        let borderRadius = [...border]
 
         if (colour[index] === '#ffc53b') {
             temp[index] = "transparent"
@@ -20,23 +27,31 @@ const CategoriesList = ({ categories }) => {
         } else {
             temp[index] = "#ffc53b"
             tempFont[index] = "white"
+            tempSelected.push(categories[index])
             setColour(temp)
             setFontColour(tempFont)
+            setCategoriesSelected(tempSelected)
+            
 
             if (index === 4) {
                 borderRadius[index] = "10px"
                 setBorder(borderRadius)
                 console.log(index, lastElement)
             }
+
+            // console.log(tempSelected)
+
+
+            
         }
 
+        // console.log(colour)   this went right, it's good
         
-        
-    }
-    const [colour, setColour] = useState([5])
-    const [fontColour, setFontColour] = useState([5])
-    const lastElement = colour.length
-    const [border, setBorder] = useState([5])
+         }
+
+            useEffect(() => {
+                onChange(categoriesSelected)
+            }, [categoriesSelected])
 
     return (  
         <div className={styles.container}>
