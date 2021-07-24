@@ -3,7 +3,6 @@ import Recipe from "./Recipe";
 import styles from "../styling/RecipesList.module.css"
 
 const RecipesList = () => {
-
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {

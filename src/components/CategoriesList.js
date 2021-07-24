@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Category from "./Category";
 import styles from '../styling/CategoriesList.module.css'
+import { useBetween } from "use-between";
 
 const CategoriesList = () => {
 
-    const onClick = (index) => {
+    const onClick = (index, category) => {
 
         let temp = [...colour]
         let tempFont = [...fontColour]
@@ -26,10 +27,9 @@ const CategoriesList = () => {
                 borderRadius[index] = "10px"
                 setBorder(borderRadius)
                 console.log(index, lastElement)
-
-
             }
         }
+
         
         // console.log(colour)   this went right, it's good
         
@@ -61,12 +61,12 @@ const CategoriesList = () => {
                 fontColour={fontColour[index]}
                 categoryTitle={category.stringName}
                 onClick={() => { 
-                    onClick(index)
+                    onClick(index, category)
                 }} />
             ))}
             
         </div>
     );
 }
- 
+
 export default CategoriesList;

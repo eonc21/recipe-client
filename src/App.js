@@ -12,6 +12,7 @@ import {
 import RecipesList from './components/RecipesList';
 import RecipeMessage from './components/RecipeMessage';
 import CategoriesList from './components/CategoriesList';
+import Wrapper from './components/Wrapper';
 
 function App() {
   return (
@@ -42,12 +43,7 @@ function App() {
     </div>
   
       <div className="AppColumn">
-        <div className="container">
-        <RecipeMessage />
-        <CategoriesList />
-        </div>
-        
-          <RecipesList />
+        <Wrapper />
 
       </div>
     </div>
