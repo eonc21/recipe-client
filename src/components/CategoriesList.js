@@ -3,7 +3,7 @@ import Category from "./Category";
 import styles from '../styling/CategoriesList.module.css'
 import { useBetween } from "use-between";
 
-const CategoriesList = () => {
+const CategoriesList = ({ categories }) => {
 
     const onClick = (index, category) => {
 
@@ -31,25 +31,12 @@ const CategoriesList = () => {
         }
 
         
-        // console.log(colour)   this went right, it's good
         
     }
     const [colour, setColour] = useState([5])
     const [fontColour, setFontColour] = useState([5])
     const lastElement = colour.length
-
-    const [categories, setCategories] = useState([])
     const [border, setBorder] = useState([5])
-
-    useEffect(() => {
-        fetch("http://localhost:5001/api/categories/getAll")
-        .then(response => response.json())
-        .then(res =>{
-            //  console.log(res)  
-             setCategories(res)
-            })
-
-    }, [])
 
     return (  
         <div className={styles.container}>

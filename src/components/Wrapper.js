@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 
 const Wrapper = () => {
-    
+
     const [recipes, setRecipes] = useState([])
     const [categories, setCategories] = useState([])
 
@@ -24,11 +24,27 @@ const Wrapper = () => {
             })
     }, [])
 
+
+    /**
+     * useEffect that fetches the categories
+     * from the getAll endpoint.
+     */
+
+     useEffect(() => {
+        fetch("http://localhost:5001/api/categories/getAll")
+        .then(response => response.json())
+        .then(res =>{
+             console.log(res)  
+             setCategories(res)
+            })
+    }, [])
+
     return ( 
         <div className={styles.container}>
             <div className={styles.row}>
                 <RecipeMessage />
-                <CategoriesList />
+                <CategoriesList 
+                    categories={categories}/>
             </div>
             
             <div className={styles.recipeContainer}>
