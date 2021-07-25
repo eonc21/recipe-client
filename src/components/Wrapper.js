@@ -6,23 +6,19 @@ import { useEffect, useState, useRef } from "react";
 
 
 const Wrapper = () => {
-
     const [recipes, setRecipes] = useState([])
     const [recipesSelected, setRecipesSelected] = useState([])
     const [categories, setCategories] = useState([])
     const [filters, setFilters] = useState([]);
 
-
-     const handleFilterChange = (newValue) => {
-        setFilters(newValue)
-      }
+    const handleFilterChange = (newValue) => {
+      setFilters(newValue)
+    }
       
-
-      /**
-     * useEffect that fetches the recipes
-     * from the getAll endpoint.
+    /**
+     * useEffect that updates the selected recipes on a filter change
      */
-      let tempArray =[]
+    let tempArray =[]
     useEffect(() => {
         if (filters.length == 0) {
             tempArray = recipes
@@ -41,10 +37,9 @@ const Wrapper = () => {
 
 
     /**
-     * useEffect that fetches the categories
-     * from the getAll endpoint.
+     * useEffect that fetches the categories and recipes
+     * from their getAll endpoints.
      */
-
      useEffect(() => {
         fetch("http://localhost:5001/api/categories/getAll")
           .then(response => response.json())
@@ -87,7 +82,6 @@ const Wrapper = () => {
                 <RecipesList 
                     recipes={recipesSelected}
                     filters={filters} />
-
             </div>
         </div>
      );
