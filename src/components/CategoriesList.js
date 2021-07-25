@@ -16,14 +16,18 @@ const CategoriesList = ({ categories, onChange }) => {
     let tempFont = [...fontColour]
     let borderRadius = [...border]
     let tempSelected = [...categoriesSelected]
-    
+
     const onClick = (index, category) => {
 
         if (colour[index] === '#ffc53b') {
             temp[index] = "transparent"
             tempFont[index] = "black"
+            tempSelected = tempSelected.filter(item => item !== categories[index])
+            tempSelected.splice(index, 1)
             setColour(temp)
             setFontColour(tempFont)
+            setCategoriesSelected(tempSelected)
+            console.log("temp",tempSelected)
         
         } else {
             temp[index] = "#ffc53b"
@@ -39,16 +43,16 @@ const CategoriesList = ({ categories, onChange }) => {
                 setBorder(borderRadius)
                 console.log(index, lastElement)
             }
-
-
-
-            
+     
         }        
          }
+
+         
 
             useEffect(() => {
                 onChange(categoriesSelected)
             }, [categoriesSelected])
+
 
     return (  
         <div className={styles.container}>

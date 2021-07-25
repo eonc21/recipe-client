@@ -14,6 +14,7 @@ const Wrapper = () => {
 
      const handleFilterChange = (newValue) => {
         setFilters(newValue)
+        console.log(newValue)
       }
       
 
@@ -28,31 +29,31 @@ const Wrapper = () => {
         .then(response => response.json())
         .then(res =>{
             //  console.log(res)  
-             setRecipes(res)
-             filters.includes(res.map(r => r.categories.map(c => c.stringName)))
+            //  setRecipes(res)
+            //  filters.includes(res.map(r => r.categories.map(c => c.stringName)))
+            //  console.log(recipes)
 
-             for (let i = 0; i < recipes.length; i++) {
-                for (let j = 0; j < filters.length; j++) {
-                    console.log("recipe", recipes[i].categories.map(c => c.stringName))
-                    console.log(filters[j])
-                    console.log(recipes[i].categories.map(c => c.stringName).includes(filters[j].stringName))
-                    if (recipes[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
-                        tempArray.push(recipes[i])  
-                        console.log((i == recipes.length - 1 && j == filters.length - 1) )
-                        if (i == recipes.length - 1 && j == filters.length - 1) 
-                        console.log("final array", tempArray) 
-
-                            setRecipes(tempArray)
-                    }
-
-                } 
-                // setRecipes(tempArray)
-
+             if (filters.length == 0) {
+                 tempArray = res
+             } else {
+                for (let i = 0; i < recipes.length; i++) {
+                    for (let j = 0; j < filters.length; j++) {
+                        // console.log("for loops are ran more than once")
+                        if (res[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
+                            tempArray.push(res[i])  
+                                
+                        }
+                    } 
+                 }
              }
+            setRecipes(tempArray)
+            // console.log(tempArray)
 
   
             })
     }, [filters])
+
+ 
 
     // useEffect(() => {
     //     setRecipes(tempArray)
