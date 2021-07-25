@@ -8,13 +8,13 @@ import { useEffect, useState, useRef } from "react";
 const Wrapper = () => {
 
     const [recipes, setRecipes] = useState([])
+    const [recipesSelected, setRecipesSelected] = useState([])
     const [categories, setCategories] = useState([])
     const [filters, setFilters] = useState([]);
 
 
      const handleFilterChange = (newValue) => {
         setFilters(newValue)
-        console.log(newValue)
       }
       
 
@@ -23,41 +23,21 @@ const Wrapper = () => {
      * from the getAll endpoint.
      */
       let tempArray =[]
-      let trigger
     useEffect(() => {
-        fetch("http://localhost:5001/api/recipes/getAll")
-        .then(response => response.json())
-        .then(res =>{
-            //  console.log(res)  
-            //  setRecipes(res)
-            //  filters.includes(res.map(r => r.categories.map(c => c.stringName)))
-            //  console.log(recipes)
+        if (filters.length == 0) {
+            tempArray = recipes
+        } else {
+          for (let i = 0; i < recipes.length; i++) {
+              for (let j = 0; j < filters.length; j++) {
+                  if (recipes[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
+                      tempArray.push(recipes[i])  
+                  }
+              } 
+            }
+        }
 
-             if (filters.length == 0) {
-                 tempArray = res
-             } else {
-                for (let i = 0; i < recipes.length; i++) {
-                    for (let j = 0; j < filters.length; j++) {
-                        // console.log("for loops are ran more than once")
-                        if (res[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
-                            tempArray.push(res[i])  
-                                
-                        }
-                    } 
-                 }
-             }
-            setRecipes(tempArray)
-            // console.log(tempArray)
-
-  
-            })
+      setRecipesSelected(tempArray)
     }, [filters])
-
- 
-
-    // useEffect(() => {
-    //     setRecipes(tempArray)
-    // }, [trigger])
 
 
     /**
@@ -67,11 +47,17 @@ const Wrapper = () => {
 
      useEffect(() => {
         fetch("http://localhost:5001/api/categories/getAll")
-        .then(response => response.json())
-        .then(res =>{            
-             setCategories(res)
+          .then(response => response.json())
+          .then(res =>{            
+              setCategories(res)
+          })
 
-            })
+        fetch("http://localhost:5001/api/recipes/getAll")
+          .then(response => response.json())
+          .then(res =>{            
+              setRecipes(res)
+              setRecipesSelected(res)
+          })
     }, [])
 
 
@@ -83,7 +69,6 @@ const Wrapper = () => {
         previousValues.current.recipes !== recipes
       ) {
 
-        console.log("both changed")
         previousValues.current = { filters, recipes };
       }
     });
@@ -100,7 +85,7 @@ const Wrapper = () => {
             
             <div className={styles.recipeContainer}>
                 <RecipesList 
-                    recipes={recipes}
+                    recipes={recipesSelected}
                     filters={filters} />
 
             </div>
