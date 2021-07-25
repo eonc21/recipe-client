@@ -21,15 +21,42 @@ const Wrapper = () => {
      * useEffect that fetches the recipes
      * from the getAll endpoint.
      */
-      
+      let tempArray =[]
+      let trigger
     useEffect(() => {
         fetch("http://localhost:5001/api/recipes/getAll")
         .then(response => response.json())
         .then(res =>{
-             console.log(res)  
+            //  console.log(res)  
              setRecipes(res)
+             filters.includes(res.map(r => r.categories.map(c => c.stringName)))
+
+             for (let i = 0; i < recipes.length; i++) {
+                for (let j = 0; j < filters.length; j++) {
+                    console.log("recipe", recipes[i].categories.map(c => c.stringName))
+                    console.log(filters[j])
+                    console.log(recipes[i].categories.map(c => c.stringName).includes(filters[j].stringName))
+                    if (recipes[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
+                        tempArray.push(recipes[i])  
+                        console.log((i == recipes.length - 1 && j == filters.length - 1) )
+                        if (i == recipes.length - 1 && j == filters.length - 1) 
+                        console.log("final array", tempArray) 
+
+                            setRecipes(tempArray)
+                    }
+
+                } 
+                // setRecipes(tempArray)
+
+             }
+
+  
             })
-    }, [])
+    }, [filters])
+
+    // useEffect(() => {
+    //     setRecipes(tempArray)
+    // }, [trigger])
 
 
     /**
@@ -44,9 +71,9 @@ const Wrapper = () => {
              setCategories(res)
 
             })
-    }, [filters])
-    
-    
+    }, [])
+
+
     const previousValues = useRef({ filters, recipes });
   
     useEffect(() => {
