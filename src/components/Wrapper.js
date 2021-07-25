@@ -3,6 +3,7 @@ import RecipesList from "./RecipesList";
 import RecipeMessage from "./RecipeMessage";
 import styles from '../styling/Wrapper.module.css'
 import { useEffect, useState, useRef } from "react";
+import constants from '../util/constants'
 
 
 const Wrapper = () => {
@@ -41,13 +42,13 @@ const Wrapper = () => {
      * from their getAll endpoints.
      */
      useEffect(() => {
-        fetch("http://localhost:5001/api/categories/getAll")
+        fetch(constants.allCategories())
           .then(response => response.json())
           .then(res =>{            
               setCategories(res)
           })
 
-        fetch("http://localhost:5001/api/recipes/getAll")
+        fetch(constants.allRecipes())
           .then(response => response.json())
           .then(res =>{            
               setRecipes(res)

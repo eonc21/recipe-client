@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "prefix": "http://localhost:5001/api",
+    "categories": {
+      "getAll": "/categories/getAll"
+    },
+    "recipes": {
+      "getAll": "/recipes/getAll"
+    }
+  },
+  "prod": {
+    "prefix": "",
+    "categories": {
+      "getAll": ""
+    },
+    "recipes": {
+      "getAll": ""
+    }
+  }
+}
