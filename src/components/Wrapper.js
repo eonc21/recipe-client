@@ -3,75 +3,57 @@ import RecipesList from "./RecipesList";
 import RecipeMessage from "./RecipeMessage";
 import styles from '../styling/Wrapper.module.css'
 import { useEffect, useState, useRef } from "react";
+import constants from '../util/constants'
 
 
 const Wrapper = () => {
-
     const [recipes, setRecipes] = useState([])
+    const [recipesSelected, setRecipesSelected] = useState([])
     const [categories, setCategories] = useState([])
     const [filters, setFilters] = useState([]);
 
-
-     const handleFilterChange = (newValue) => {
-        setFilters(newValue)
-        console.log(newValue)
-      }
+    const handleFilterChange = (newValue) => {
+      setFilters(newValue)
+    }
       
-
-      /**
-     * useEffect that fetches the recipes
-     * from the getAll endpoint.
+    /**
+     * useEffect that updates the selected recipes on a filter change
      */
-      let tempArray =[]
-      let trigger
+    let tempArray =[]
     useEffect(() => {
-        fetch("http://localhost:5001/api/recipes/getAll")
-        .then(response => response.json())
-        .then(res =>{
-            //  console.log(res)  
-            //  setRecipes(res)
-            //  filters.includes(res.map(r => r.categories.map(c => c.stringName)))
-            //  console.log(recipes)
+        if (filters.length == 0) {
+            tempArray = recipes
+        } else {
+          for (let i = 0; i < recipes.length; i++) {
+              for (let j = 0; j < filters.length; j++) {
+                  if (recipes[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
+                      tempArray.push(recipes[i])  
+                  }
+              } 
+            }
+        }
 
-             if (filters.length == 0) {
-                 tempArray = res
-             } else {
-                for (let i = 0; i < recipes.length; i++) {
-                    for (let j = 0; j < filters.length; j++) {
-                        // console.log("for loops are ran more than once")
-                        if (res[i].categories.map(c => c.stringName).includes(filters[j].stringName)) {
-                            tempArray.push(res[i])  
-                                
-                        }
-                    } 
-                 }
-             }
-            setRecipes(tempArray)
-            // console.log(tempArray)
-
-  
-            })
+      setRecipesSelected(tempArray)
     }, [filters])
-
- 
-
-    // useEffect(() => {
-    //     setRecipes(tempArray)
-    // }, [trigger])
 
 
     /**
-     * useEffect that fetches the categories
-     * from the getAll endpoint.
+     * useEffect that fetches the categories and recipes
+     * from their getAll endpoints.
      */
-
      useEffect(() => {
-        fetch("http://localhost:5001/api/categories/getAll")
-        .then(response => response.json())
-        .then(res =>{            
-             setCategories(res)
+        fetch(constants.allCategories())
+          .then(response => response.json())
+          .then(res =>{            
+              setCategories(res)
+          })
 
-            })
+        fetch(constants.allRecipes())
+          .then(response => response.json())
+          .then(res =>{            
+              setRecipes(res)
+              setRecipesSelected(res)
+          })
     }, [])
 
 
@@ -83,7 +65,6 @@ const Wrapper = () => {
         previousValues.current.recipes !== recipes
       ) {
 
-        console.log("both changed")
         previousValues.current = { filters, recipes };
       }
     });
@@ -100,9 +81,8 @@ const Wrapper = () => {
             
             <div className={styles.recipeContainer}>
                 <RecipesList 
-                    recipes={recipes}
+                    recipes={recipesSelected}
                     filters={filters} />
-
             </div>
         </div>
      );

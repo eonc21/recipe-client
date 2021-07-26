@@ -11,7 +11,7 @@ const Recipe = ({ recipeTitle, recipeDescription, recipePicture }) => {
         setTitle(recipeTitle)
         setDescription(recipeDescription)
         setPicture(recipePicture)
-    }, [])
+    }, [recipeTitle])
 
     return ( 
         <div className={styles.container} >
