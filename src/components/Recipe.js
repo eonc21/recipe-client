@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from '../styling/Recipe.module.css'
 
-const Recipe = ({ recipeTitle, recipeDescription, recipePicture }) => {
+const Recipe = ({ recipeTitle, recipeDescription, recipePicture, onClick }) => {
     
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -14,7 +14,10 @@ const Recipe = ({ recipeTitle, recipeDescription, recipePicture }) => {
     }, [recipeTitle])
 
     return ( 
-        <div className={styles.container} >
+        <div 
+            className={styles.container}
+            onClick={onClick}
+         >
             <div className={styles.imageContainer}>
               <img className={styles.image} src={picture}/>
 

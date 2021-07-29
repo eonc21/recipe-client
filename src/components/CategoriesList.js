@@ -23,7 +23,7 @@ const CategoriesList = ({ categories, onChange }) => {
             temp[index] = "transparent"
             tempFont[index] = "black"
             tempSelected = tempSelected.filter(item => item !== categories[index])
-            setColour(temp)
+            setColour(temp)                                                                         
             setFontColour(tempFont)
             setCategoriesSelected(tempSelected)
         

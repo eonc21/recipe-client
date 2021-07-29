@@ -11,11 +11,13 @@ const Wrapper = () => {
     const [recipesSelected, setRecipesSelected] = useState([])
     const [categories, setCategories] = useState([])
     const [filters, setFilters] = useState([]);
+    const [recipeId, setRecipeId] = useState();
 
     const handleFilterChange = (newValue) => {
       setFilters(newValue)
     }
-      
+
+
     /**
      * useEffect that updates the selected recipes on a filter change
      */
