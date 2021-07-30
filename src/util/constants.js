@@ -8,6 +8,7 @@ function allRecipes() {
   return getEndpoint('recipes', 'getAll')
 }
 
+
 /**
  * Gets the full endpoint for a given entity and query
  * @param {String} entities The entities you are referring to. Must be one of the following: "categories", "recipes"

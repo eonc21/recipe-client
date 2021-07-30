@@ -1,12 +1,36 @@
 import { useEffect, useState } from "react";
 import Recipe from "./Recipe";
 import styles from "../styling/RecipesList.module.css"
+import { useHistory } from 'react-router-dom'
+
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 const RecipesList = ({ recipes }) => {
+    const history = useHistory();
+    const [clickedRecipe, setClickedRecipe] = useState()
 
     const onClick = (recipe) => {
-        alert(recipe.id)
-    }
+
+        fetch(`http://localhost:5001/api/recipes/${recipe.id}`)
+          .then(response => response.json())
+          .then(res =>  {
+              setClickedRecipe(res)
+              console.log(res)
+              history.push({
+                pathname: `/recipe`, 
+                // search: `?id=${clickedRecipe.id}`,
+                state: res
+        });
+          })
+
+        
+      
+   }
 
     return ( 
         <div className={styles.container}>
