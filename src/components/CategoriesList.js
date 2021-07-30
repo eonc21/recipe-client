@@ -39,7 +39,6 @@ const CategoriesList = ({ categories, onChange }) => {
             if (index === 4) {
                 borderRadius[index] = "10px"
                 setBorder(borderRadius)
-                console.log(index, lastElement)
             }
      
         }        

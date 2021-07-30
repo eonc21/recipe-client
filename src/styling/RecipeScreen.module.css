@@ -30,7 +30,6 @@
     flex-direction: row;
     justify-content: space-evenly;
 
-
 }
 
 .halfRowContainer {
@@ -38,6 +37,7 @@
     height: 90%;
     margin: 10px;
     border-right: grey 2px solid;
-    font-size: large;
+    font-size: 1rem;
+    margin-top: 0;
 }
 

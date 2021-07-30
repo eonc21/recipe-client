@@ -20,10 +20,8 @@ const RecipesList = ({ recipes }) => {
           .then(response => response.json())
           .then(res =>  {
               setClickedRecipe(res)
-              console.log(res)
               history.push({
                 pathname: `/recipe`, 
-                // search: `?id=${clickedRecipe.id}`,
                 state: res
         });
           })
