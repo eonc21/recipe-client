@@ -5,6 +5,7 @@ import Picture from './components/Picture';
 import React, { useEffect, useState } from "react";
 import RecipeScreen from "./components/RecipeScreen"
 import NavigationBar from './components/NavigationBar';
+import CreateRecipeScreen from './components/CreateRecipeScreen';
 import {
   BrowserRouter as Router,
   Switch,
@@ -45,6 +46,7 @@ function App() {
       <Switch>
       <Route exact path="/" exact component={Home} />
       <Route path="/recipe" forceRefresh={true} component={withRouter(RecipeScreen)}  />
+      <Route path="/create" component={withRouter(CreateRecipeScreen)} />
       </Switch>
       
     </Router>

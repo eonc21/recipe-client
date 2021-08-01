@@ -7,4 +7,12 @@
     margin: 10px;
     font-size: 1.1rem;
     color: white;
+    cursor: pointer;
+    transition: transform 250ms;
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
 }

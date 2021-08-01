@@ -31,6 +31,6 @@ h3 {
 .buttonContainer {
     display: flex;
     flex-direction: row;
-    align-self: center;
-    
+    align-self: center;    
 }
+

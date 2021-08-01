@@ -1,9 +1,19 @@
 import styles from "../styling/WelcomeMessage.module.css"
 import Button from "./Button";
+import { useHistory } from "react-router";
+
 
 const WelcomeMessage = () => {
-    const onClick = () => {
-        alert("yooooooooooo")
+    const history = useHistory();
+
+    const onClickNewRecipe = () => {
+        history.push({
+            pathname: `/create`, 
+    });
+    }
+
+    const onClickAllRecipes = () => {
+        alert("you want all the recipes? NOT IMPLEMENTED YET THO")
     }
 
     return ( 
@@ -14,12 +24,12 @@ const WelcomeMessage = () => {
             <div className={styles.buttonContainer}>
                 <Button 
                     buttonText="Take a look"
-                    onClick={onClick}/>
+                    onClick={onClickAllRecipes}/>
 
-                <Button 
+                <Button
                     buttonText="Add recipe" 
                     buttonColor="#EE6F6C"
-                    onClick={onClick}/>
+                    onClick={onClickNewRecipe}/>
             </div>
             
         </div>
