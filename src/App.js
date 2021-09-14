@@ -5,33 +5,45 @@ import Picture from './components/Picture';
 import React, { useEffect, useState } from "react";
 import RecipeScreen from "./components/RecipeScreen"
 import NavigationBar from './components/NavigationBar';
+import Image from './mainpic.png'
 import CreateRecipeScreen from './components/CreateRecipeScreen';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   withRouter,
-  useLocation
 } from "react-router-dom";
-import RecipesList from './components/RecipesList';
-import RecipeMessage from './components/RecipeMessage';
-import CategoriesList from './components/CategoriesList';
+
 import Wrapper from './components/Wrapper';
-import Recipe from './components/Recipe';
 
 const Home = () => {
+  const [categories, setCategories] = useState([])
+
+  const handleCategoryFetch = (newValue) => {
+    setCategories(newValue.map(c => c.stringName))
+  }
+
+  console.log('new value', categories)
   return (
     <div className="everything">
           <div className="App">
             <NavigationBar />
-            <WelcomeMessage />
-            <Picture />
+            <WelcomeMessage 
+                first="Welcome to Elipe."
+                second="A collection of"
+                third="student recipes."
+                forth="Easy, cheap and fast recipes I am"
+                fifth="saving for future reference."
+                hasButtons={true} 
+                categories={categories}
+                />
+            <Picture link={Image} />
             
           </div>
         
             <div className="AppColumn">
-              <Wrapper />
+              <Wrapper
+                onChange={handleCategoryFetch} />
 
             </div>
       </div>

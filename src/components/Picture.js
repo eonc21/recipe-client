@@ -1,10 +1,9 @@
-import Image from '../mainpic.png'
 import styles from '../styling/Picture.module.css'
 
-const Picture = () => {
+const Picture = ({ link }) => {
     return ( 
         <div className={styles.container}>
-            <img src={Image} alt="girl cooking"/>
+            <img src={link} alt="girl cooking"/>
         </div>
      );
 }

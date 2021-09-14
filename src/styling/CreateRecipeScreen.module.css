@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 100vh;
+    min-width: 600px;
+}
+
+.columnContainer {
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  /* min-width: 600px; */
+}
+
+form, label {
+  display: flex;
+  flex-direction: column;
+  /* align-self: center; */
+}
+
+label {
+  width: 100%;
+}
+
+form {
+ width: 90%;
+}
+
+input {
+  text-align: center;
+  height: 30px;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.halfContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.dropdownControl {
+  background-color: orange;
+  padding-right: 0%;
+  padding-left: 0%;
+}
+
+.dropdown {
+  width: 100%; 
+  padding: 0;
+}
+
+.idk {
+  width: 50%;
+}

@@ -15,8 +15,8 @@ import {
 import NavigationBar from "./NavigationBar";
 
 const RecipeScreen = (props) => {
-    const location = useLocation();
-    const [recipe, setRecipe] = useState(location.state)
+  const location = useLocation();
+  const [recipe, setRecipe] = useState(location.state)
     let temp = recipe.instructions.split('..')
     const [steps, setSteps] = useState(temp)
 

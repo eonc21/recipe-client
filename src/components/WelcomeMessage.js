@@ -3,12 +3,13 @@ import Button from "./Button";
 import { useHistory } from "react-router";
 
 
-const WelcomeMessage = () => {
+const WelcomeMessage = ({ first, second, third, forth, fifth, hasButtons, newStyle, categories }) => {
     const history = useHistory();
 
     const onClickNewRecipe = () => {
         history.push({
             pathname: `/create`, 
+            state: categories
     });
     }
 
@@ -17,10 +18,13 @@ const WelcomeMessage = () => {
     }
 
     return ( 
-        <div className={styles.container}>
-            <h3>Welcome to Elipe.</h3>
-            <h1>A collection of <br /> student recipes.</h1>
-            <h3>Easy, cheap and fast recipes I am <br/> saving for future reference.</h3>
+        <div className={styles.container}
+        style={newStyle}>
+            <h3>{first}</h3>
+            <h1>{second} <br /> {third}</h1>
+            <h3>{forth} <br/> {fifth}</h3>
+            
+            {hasButtons &&
             <div className={styles.buttonContainer}>
                 <Button 
                     buttonText="Take a look"
@@ -31,6 +35,7 @@ const WelcomeMessage = () => {
                     buttonColor="#EE6F6C"
                     onClick={onClickNewRecipe}/>
             </div>
+            }
             
         </div>
      );

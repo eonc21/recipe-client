@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import constants from '../util/constants'
 
 
-const Wrapper = () => {
+const Wrapper = ({ onChange }) => {
     const [recipes, setRecipes] = useState([])
     const [recipesSelected, setRecipesSelected] = useState([])
     const [categories, setCategories] = useState([])
@@ -16,6 +16,10 @@ const Wrapper = () => {
     const handleFilterChange = (newValue) => {
       setFilters(newValue)
     }
+
+    useEffect(() => {
+      onChange(categories)
+  }, [categories])
 
 
     /**
