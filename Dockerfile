@@ -8,4 +8,4 @@ ENV PORT=5000
 
 RUN npm ci
 
-CMD [ "npm start" ]
+CMD [ "npm", "start" ]
