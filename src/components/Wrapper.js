@@ -4,31 +4,47 @@ import RecipeMessage from "./RecipeMessage";
 import styles from '../styling/Wrapper.module.css'
 import { useEffect, useState, useRef } from "react";
 import constants from '../util/constants'
+import { hardCodedCategories, hardCodedRecipes } from "../util/hardCodedVars";
 
 
 const Wrapper = ({ onChange }) => {
-    const [recipes, setRecipes] = useState([])
+    const [recipes, setRecipes] = useState(hardCodedRecipes)
     const [recipesSelected, setRecipesSelected] = useState([])
     const [categories, setCategories] = useState([])
     const [filters, setFilters] = useState([]);
-    const [recipeId, setRecipeId] = useState();
 
+    /**
+     * @param newValue the new filters
+     * that are getting applied
+     * 
+     * Changes the state of the filters
+     * to the new value
+     */
     const handleFilterChange = (newValue) => {
       setFilters(newValue)
     }
 
+
+    /**
+     * Sends state to parent through its
+     * state changing function which is
+     * received as props.
+     */
     useEffect(() => {
       onChange(categories)
   }, [categories])
 
 
+
     /**
-     * useEffect that updates the selected recipes on a filter change
+     * useEffect that updates the selected 
+     * recipes on a filter change, based on
+     * whether they are in that category or not.
      */
-    let tempArray =[]
+    let tempArray = []
     useEffect(() => {
-        if (filters.length == 0) {
-            tempArray = recipes
+        if (filters.length === 0) {
+            tempArray = [...recipes]
         } else {
           for (let i = 0; i < recipes.length; i++) {
               for (let j = 0; j < filters.length; j++) {
@@ -47,33 +63,33 @@ const Wrapper = ({ onChange }) => {
      * useEffect that fetches the categories and recipes
      * from their getAll endpoints.
      */
-     useEffect(() => {
-        fetch(constants.allCategories())
-          .then(response => response.json())
-          .then(res =>{            
-              setCategories(res)
-          })
+    //  useEffect(() => {
+    //     fetch(constants.allCategories())
+    //       .then(response => response.json())
+    //       .then(res =>{            
+    //           setCategories(res)
+    //       })
 
-        fetch(constants.allRecipes())
-          .then(response => response.json())
-          .then(res =>{            
-              setRecipes(res)
-              setRecipesSelected(res)
-          })
-    }, [])
+    //     fetch(constants.allRecipes())
+    //       .then(response => response.json())
+    //       .then(res =>{            
+    //           setRecipes(res)
+    //           setRecipesSelected(res)
+    //       })
+    // }, [])
 
 
-    const previousValues = useRef({ filters, recipes });
-  
-    useEffect(() => {
-      if (
-        previousValues.current.filters !== filters &&
-        previousValues.current.recipes !== recipes
-      ) {
+    // const previousValues = useRef({ filters, recipes });
 
-        previousValues.current = { filters, recipes };
-      }
-    });
+    // useEffect(() => {
+    //   if (
+    //     previousValues.current.filters !== filters &&
+    //     previousValues.current.recipes !== recipes
+    //   ) {
+
+    //     previousValues.current = { filters, recipes };
+    //   }
+    // });
 
 
     return ( 
@@ -81,7 +97,7 @@ const Wrapper = ({ onChange }) => {
             <div className={styles.row}>
                 <RecipeMessage />
                 <CategoriesList 
-                    categories={categories}
+                    categories={hardCodedCategories}
                     onChange={handleFilterChange}/>
             </div>
             

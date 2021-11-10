@@ -14,17 +14,32 @@ const RecipesList = ({ recipes }) => {
     const history = useHistory();
     const [clickedRecipe, setClickedRecipe] = useState()
 
-    const onClick = (recipe) => {
 
-        fetch(`http://localhost:5001/api/recipes/${recipe.id}`)
-          .then(response => response.json())
-          .then(res =>  {
-              setClickedRecipe(res)
+    /**
+     * @param recipe the recipe to show 
+     * 
+     * Navigate to a new page displaying
+     * the clicked recipe with its content.
+     */
+    const onClick = (recipe) => {
+        setClickedRecipe(recipe)
               history.push({
-                pathname: `/recipe`, 
-                state: res
-        });
-          })
+                pathname: `/recipe/${recipe.title}`, 
+                state: recipe
+              })
+
+        // fetch(`http://localhost:5001/api/recipes/${recipe.id}`)
+        //   .then(response => response.json())
+        //   .then(res =>  {
+        //       setClickedRecipe(res)
+        //       history.push({
+        //         pathname: `/recipe`, 
+        //         state: res
+        // });
+        //   })
+        //   .catch(err => {
+        //       console.log(err)
+        //   })
 
         
       
@@ -34,10 +49,7 @@ const RecipesList = ({ recipes }) => {
         <div className={styles.container}>
             {recipes.map(recipe => (
                 <Recipe 
-                onClick={ () => {
-                    onClick(recipe)
-                }
-                }
+                onClick={() => onClick(recipe)}
                 recipeTitle={recipe.title}
                 recipePicture={recipe.pictureLink}
                 recipeDescription={recipe.description}

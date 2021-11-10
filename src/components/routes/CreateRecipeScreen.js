@@ -1,8 +1,8 @@
-import NavigationBar from "./NavigationBar"
-import WelcomeMessage from "./WelcomeMessage"
-import Picture from "./Picture"
-import styles from '../styling/CreateRecipeScreen.module.css'
-import Image from '../add3.png'
+import NavigationBar from "../NavigationBar"
+import WelcomeMessage from "../WelcomeMessage"
+import Picture from "../Picture"
+import styles from '../../styling/CreateRecipeScreen.module.css'
+import Image from '../../attributes/add3.png'
 import Dropdown from 'react-dropdown';
 import { useEffect, useState, useRef } from "react";
 import {
@@ -10,7 +10,7 @@ import {
     useLocation
   } from "react-router-dom";
 import Select from 'react-select'
-import constants from "../util/constants"
+import constants from "../../util/constants"
 
 
 const CreateRecipeScreen = () => {

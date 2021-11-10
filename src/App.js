@@ -3,10 +3,10 @@ import './App.css';
 import WelcomeMessage from './components/WelcomeMessage';
 import Picture from './components/Picture';
 import React, { useEffect, useState } from "react";
-import RecipeScreen from "./components/RecipeScreen"
+import RecipeScreen from "./components/routes/RecipeScreen"
 import NavigationBar from './components/NavigationBar';
 import Image from './mainpic.png'
-import CreateRecipeScreen from './components/CreateRecipeScreen';
+import CreateRecipeScreen from './components/routes/CreateRecipeScreen';
 import {
   BrowserRouter as Router,
   Switch,
